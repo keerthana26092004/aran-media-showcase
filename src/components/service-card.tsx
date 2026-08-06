@@ -10,10 +10,39 @@ interface ServiceCardProps {
   featureCount?: number;
 }
 
+/** Per-service accent styling taken from the Aran brand poster. */
+const accentStyles = {
+  info: {
+    title: "text-info",
+    rule: "bg-info",
+    button: "bg-info text-primary-foreground",
+    icon: "bg-info/10 text-info",
+  },
+  brand: {
+    title: "text-brand",
+    rule: "bg-brand",
+    button: "bg-brand text-brand-foreground",
+    icon: "bg-brand/10 text-brand",
+  },
+  leaf: {
+    title: "text-leaf",
+    rule: "bg-leaf",
+    button: "bg-leaf text-primary-foreground",
+    icon: "bg-leaf/10 text-leaf",
+  },
+  violet: {
+    title: "text-violet",
+    rule: "bg-violet",
+    button: "bg-violet text-primary-foreground",
+    icon: "bg-violet/10 text-violet",
+  },
+} as const;
+
 /** Card used on the home page and the services overview. */
 export function ServiceCard({ service, featureCount = 4 }: ServiceCardProps) {
   const Icon = service.icon;
   const headingId = `service-${service.slug}-title`;
+  const accent = accentStyles[service.accent];
 
   return (
     <article
@@ -34,20 +63,26 @@ export function ServiceCard({ service, featureCount = 4 }: ServiceCardProps) {
         <div className="flex min-w-0 items-center gap-3">
           <span
             aria-hidden="true"
-            className={`flex size-11 shrink-0 items-center justify-center rounded-xl ${service.accentClass}`}
+            className={`flex size-11 shrink-0 items-center justify-center rounded-full shadow-e1 ${service.accentClass}`}
           >
             <Icon className="size-6" />
           </span>
-          <h3 id={headingId} className="min-w-0 text-xl text-foreground">
+          <h3 id={headingId} className={`min-w-0 text-xl ${accent.title}`}>
             {service.name}
           </h3>
         </div>
+        <span aria-hidden="true" className={`h-0.5 w-16 rounded-full ${accent.rule}`} />
         <p className="text-base text-muted-foreground">{service.short}</p>
-        <FeatureList items={service.features.slice(0, featureCount)} className="gap-2" />
+        <FeatureList
+          items={service.features.slice(0, featureCount)}
+          className="gap-2"
+          iconClassName={accent.icon}
+        />
         <div className="mt-auto pt-2">
-          <Button asChild variant="outline" size="sm">
+          <Button asChild size="sm" className={`rounded-full ${accent.button}`}>
             <Link to="/services/$slug" params={{ slug: service.slug }}>
-              Learn more about {service.name}
+              Learn More
+              <span className="sr-only"> about {service.name}</span>
               <ArrowRight aria-hidden="true" />
             </Link>
           </Button>

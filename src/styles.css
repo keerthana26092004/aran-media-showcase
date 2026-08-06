@@ -107,7 +107,18 @@
 
   --gradient-brand: linear-gradient(135deg, var(--brand), var(--brand-warm));
   --gradient-navy: linear-gradient(160deg, oklch(0.198 0.069 274), oklch(0.28 0.09 278));
+  /* Full logo spectrum: red -> orange -> gold -> green -> cyan -> navy blue */
+  --gradient-spectrum: linear-gradient(
+    90deg,
+    oklch(0.598 0.234 27),
+    oklch(0.702 0.188 46),
+    oklch(0.842 0.163 85.5),
+    oklch(0.6 0.152 125),
+    oklch(0.68 0.13 210),
+    oklch(0.38 0.16 268)
+  );
 }
+
 
 @layer base {
   * {
@@ -203,4 +214,22 @@
   @media (width >= 1200px) {
     padding-block: 6rem;
   }
+}
+
+/* Logo spectrum accents — mirrors the rainbow gradient in the Aran wordmark */
+@utility bg-gradient-spectrum {
+  background-image: var(--gradient-spectrum);
+}
+
+@utility text-gradient-spectrum {
+  background-image: var(--gradient-spectrum);
+  background-clip: text;
+  color: transparent;
+}
+
+/* Thin spectrum rule used beside eyebrows and under headings */
+@utility rule-spectrum {
+  height: 3px;
+  border-radius: 999px;
+  background-image: var(--gradient-spectrum);
 }

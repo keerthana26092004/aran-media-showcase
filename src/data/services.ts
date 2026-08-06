@@ -19,6 +19,8 @@ export interface Service {
   imageAlt: string;
   icon: LucideIcon;
   accentClass: string;
+  /** Brand accent key from the Aran poster: print=blue, events=pink, drone=green, video=violet. */
+  accent: "info" | "brand" | "leaf" | "violet";
   gallery: { src: string; alt: string }[];
 }
 
@@ -46,7 +48,8 @@ export const services: Service[] = [
     image: printImage,
     imageAlt: "Large-format press producing vivid printed banners beside stacks of brochures",
     icon: Printer,
-    accentClass: "bg-brand/10 text-brand",
+    accentClass: "bg-info text-primary-foreground",
+    accent: "info",
     gallery: [
       { src: printImage, alt: "Colourful banner rolling off a large-format printer" },
       { src: celebrationImage, alt: "Printed backdrop and decor set up for a celebration" },
@@ -76,7 +79,8 @@ export const services: Service[] = [
     image: eventsImage,
     imageAlt: "Wedding reception stage decorated with floral arches and warm lighting",
     icon: PartyPopper,
-    accentClass: "bg-violet/10 text-violet",
+    accentClass: "bg-brand text-brand-foreground",
+    accent: "brand",
     gallery: [
       { src: eventsImage, alt: "Couple on a floral wedding reception stage" },
       { src: celebrationImage, alt: "Pastel baby shower decor with balloon arch and floral setup" },
@@ -105,7 +109,8 @@ export const services: Service[] = [
     image: droneImage,
     imageAlt: "Aerial view of a South Indian town, temple and river at golden hour",
     icon: Drone,
-    accentClass: "bg-info/10 text-info",
+    accentClass: "bg-leaf text-primary-foreground",
+    accent: "leaf",
     gallery: [
       { src: droneImage, alt: "Golden hour aerial shot of a temple town beside a river" },
       { src: eventsImage, alt: "Event venue captured from above during a function" },
@@ -134,7 +139,8 @@ export const services: Service[] = [
     image: videoImage,
     imageAlt: "Videographer filming a couple with a cinema camera on a gimbal",
     icon: Video,
-    accentClass: "bg-gold/20 text-foreground",
+    accentClass: "bg-violet text-primary-foreground",
+    accent: "violet",
     gallery: [
       { src: videoImage, alt: "Cinema camera on a gimbal filming a wedding couple" },
       { src: eventsImage, alt: "Reception stage being filmed during an event" },
