@@ -73,7 +73,11 @@ export function ServiceCard({ service, featureCount = 4 }: ServiceCardProps) {
         </div>
         <span aria-hidden="true" className={`h-0.5 w-16 rounded-full ${accent.rule}`} />
         <p className="text-base text-muted-foreground">{service.short}</p>
-        <FeatureList items={service.features.slice(0, featureCount)} className="gap-2" />
+        <FeatureList
+          items={service.features.slice(0, featureCount)}
+          className="gap-2"
+          iconClassName={accent.icon}
+        />
         <div className="mt-auto pt-2">
           <Button asChild size="sm" className={`rounded-full ${accent.button}`}>
             <Link to="/services/$slug" params={{ slug: service.slug }}>
