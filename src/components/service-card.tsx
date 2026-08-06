@@ -12,10 +12,30 @@ interface ServiceCardProps {
 
 /** Per-service accent styling taken from the Aran brand poster. */
 const accentStyles = {
-  info: { title: "text-info", rule: "bg-info", button: "bg-info text-primary-foreground" },
-  brand: { title: "text-brand", rule: "bg-brand", button: "bg-brand text-brand-foreground" },
-  leaf: { title: "text-leaf", rule: "bg-leaf", button: "bg-leaf text-primary-foreground" },
-  violet: { title: "text-violet", rule: "bg-violet", button: "bg-violet text-primary-foreground" },
+  info: {
+    title: "text-info",
+    rule: "bg-info",
+    button: "bg-info text-primary-foreground",
+    icon: "bg-info/10 text-info",
+  },
+  brand: {
+    title: "text-brand",
+    rule: "bg-brand",
+    button: "bg-brand text-brand-foreground",
+    icon: "bg-brand/10 text-brand",
+  },
+  leaf: {
+    title: "text-leaf",
+    rule: "bg-leaf",
+    button: "bg-leaf text-primary-foreground",
+    icon: "bg-leaf/10 text-leaf",
+  },
+  violet: {
+    title: "text-violet",
+    rule: "bg-violet",
+    button: "bg-violet text-primary-foreground",
+    icon: "bg-violet/10 text-violet",
+  },
 } as const;
 
 /** Card used on the home page and the services overview. */

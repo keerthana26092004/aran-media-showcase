@@ -6,10 +6,17 @@ interface FeatureListProps {
   items: readonly string[];
   columns?: 1 | 2;
   className?: string;
+  /** Accent classes for the check badge, so lists inherit the service colour. */
+  iconClassName?: string;
 }
 
 /** Accessible checked list used for service features and highlights. */
-export function FeatureList({ items, columns = 1, className }: FeatureListProps) {
+export function FeatureList({
+  items,
+  columns = 1,
+  className,
+  iconClassName,
+}: FeatureListProps) {
   return (
     <ul
       className={cn(
@@ -22,7 +29,10 @@ export function FeatureList({ items, columns = 1, className }: FeatureListProps)
         <li key={item} className="flex items-start gap-3">
           <span
             aria-hidden="true"
-            className="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full bg-brand/10 text-brand"
+            className={cn(
+              "mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full bg-brand/10 text-brand",
+              iconClassName,
+            )}
           >
             <Check className="size-4" />
           </span>
