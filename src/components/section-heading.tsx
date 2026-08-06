@@ -8,9 +8,15 @@ interface SectionHeadingProps {
   as?: "h2" | "h3";
   className?: string;
   id?: string;
+  /** Render the heading over a dark navy surface. */
+  onDark?: boolean;
 }
 
-/** Consistent eyebrow + heading + supporting copy block used by every section. */
+/**
+ * Consistent eyebrow + heading + supporting copy block used by every section.
+ * Follows the Aran poster styling: spectrum rules beside the eyebrow and a short
+ * spectrum underline beneath the title.
+ */
 export function SectionHeading({
   eyebrow,
   title,
@@ -19,23 +25,53 @@ export function SectionHeading({
   as: Heading = "h2",
   className,
   id,
+  onDark = false,
 }: SectionHeadingProps) {
+  const centered = align === "center";
+
   return (
     <div
       className={cn(
         "flex max-w-3xl flex-col gap-3",
-        align === "center" ? "mx-auto text-center" : "text-left",
+        centered ? "mx-auto items-center text-center" : "items-start text-left",
         className,
       )}
     >
       {eyebrow ? (
-        <p className="text-sm font-semibold uppercase tracking-[0.18em] text-brand">{eyebrow}</p>
+        <div className="flex items-center gap-3">
+          {centered ? (
+            <span aria-hidden="true" className="rule-spectrum hidden w-12 rotate-180 sm:block" />
+          ) : null}
+          <p
+            className={cn(
+              "text-sm font-semibold uppercase tracking-[0.18em]",
+              onDark ? "text-gold" : "text-brand",
+            )}
+          >
+            {eyebrow}
+          </p>
+          <span aria-hidden="true" className="rule-spectrum hidden w-12 sm:block" />
+        </div>
       ) : null}
-      <Heading id={id} className="text-3xl text-foreground sm:text-4xl lg:text-[2.75rem]">
+      <Heading
+        id={id}
+        className={cn(
+          "text-3xl sm:text-4xl lg:text-[2.75rem]",
+          onDark ? "text-primary-foreground" : "text-foreground",
+        )}
+      >
         {title}
       </Heading>
+      <span aria-hidden="true" className="rule-spectrum w-24" />
       {description ? (
-        <p className="text-base leading-relaxed text-muted-foreground sm:text-lg">{description}</p>
+        <p
+          className={cn(
+            "text-base leading-relaxed sm:text-lg",
+            onDark ? "text-primary-foreground/80" : "text-muted-foreground",
+          )}
+        >
+          {description}
+        </p>
       ) : null}
     </div>
   );
