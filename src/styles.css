@@ -215,3 +215,21 @@
     padding-block: 6rem;
   }
 }
+
+/* Logo spectrum accents — mirrors the rainbow gradient in the Aran wordmark */
+@utility bg-gradient-spectrum {
+  background-image: var(--gradient-spectrum);
+}
+
+@utility text-gradient-spectrum {
+  background-image: var(--gradient-spectrum);
+  background-clip: text;
+  color: transparent;
+}
+
+/* Thin spectrum rule used beside eyebrows and under headings */
+@utility rule-spectrum {
+  height: 3px;
+  border-radius: 999px;
+  background-image: var(--gradient-spectrum);
+}
