@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Facebook, Instagram, Mail, MapPin, Phone, Youtube } from "lucide-react";
 
-import logo from "@/assets/aran-logo.png";
+import logo from "@/assets/aran-logo.png.asset.json";
 import { business, fullAddress, mainNav } from "@/data/site";
 import { services } from "@/data/services";
 
@@ -13,12 +13,12 @@ export function SiteFooter() {
       <div className="container-page grid gap-10 py-12 md:grid-cols-2 md:py-16 lg:grid-cols-4">
         <div className="flex flex-col gap-4">
           <img
-            src={logo}
+            src={logo.url}
             alt={`${business.name} logo`}
-            width={1248}
-            height={544}
+            width={1024}
+            height={411}
             loading="lazy"
-            className="h-12 w-auto rounded-lg bg-background p-1.5"
+            className="h-14 w-auto"
           />
           <p className="text-sm leading-relaxed text-primary-foreground/75">
             One team for photography, videography, drone coverage, event management and digital
