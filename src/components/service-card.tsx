@@ -81,7 +81,8 @@ export function ServiceCard({ service, featureCount = 4 }: ServiceCardProps) {
         <div className="mt-auto pt-2">
           <Button asChild size="sm" className={`rounded-full ${accent.button}`}>
             <Link to="/services/$slug" params={{ slug: service.slug }}>
-              Learn more about {service.name}
+              Learn More
+              <span className="sr-only"> about {service.name}</span>
               <ArrowRight aria-hidden="true" />
             </Link>
           </Button>
