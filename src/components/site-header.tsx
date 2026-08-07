@@ -2,7 +2,6 @@ import { Link } from "@tanstack/react-router";
 import { Menu, Phone } from "lucide-react";
 import { useState } from "react";
 
-import logo from "@/assets/aran-logo.png.asset.json";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { business, mainNav } from "@/data/site";
@@ -19,14 +18,14 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-primary-foreground/10 bg-primary text-primary-foreground">
-      <div className="container-page grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 py-3">
+      <div className="container-page grid grid-cols-[auto_1fr_auto] items-center gap-4 py-3">
         <Link
           to="/"
           className="flex min-w-0 items-center rounded-md"
           aria-label={`${business.name} — home`}
         >
           <img
-            src={logo.url}
+            src="/Aran%20media%20logo.png"
             alt={`${business.name} logo`}
             width={1024}
             height={411}
@@ -34,35 +33,27 @@ export function SiteHeader() {
           />
         </Link>
 
-        <div className="flex items-center gap-2">
-          <nav aria-label="Main navigation" className="hidden xl:block">
-            <ul className="flex items-center gap-1">
-              {mainNav.map((item) => (
-                <li key={item.to}>
-                  <Link
-                    to={item.to}
-                    className={linkBase}
-                    activeProps={{
-                      className:
-                        "text-gold font-semibold border-b-2 border-gold rounded-none pb-0.5",
-                    }}
-                    activeOptions={{ exact: item.to === "/" }}
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
+        <nav aria-label="Main navigation" className="hidden min-w-0 justify-center xl:flex">
+          <ul className="flex flex-wrap items-center justify-center gap-1">
+            {mainNav.map((item) => (
+              <li key={item.to}>
+                <Link
+                  to={item.to}
+                  className={linkBase}
+                  activeProps={{
+                    className:
+                      "text-gold font-semibold border-b-2 border-gold rounded-none pb-0.5",
+                  }}
+                  activeOptions={{ exact: item.to === "/" }}
+                >
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
 
-          <Button asChild variant="ghostOnDark" size="sm" className="hidden md:inline-flex">
-            <a href={business.phoneHref}>
-              <Phone aria-hidden="true" />
-              <span className="sr-only">Call </span>
-              {business.phoneDisplay}
-            </a>
-          </Button>
-
+        <div className="flex items-center gap-2 justify-self-end">
           <Button asChild size="sm" className="hidden rounded-full sm:inline-flex">
             <Link to="/quote">Get a Quote</Link>
           </Button>
