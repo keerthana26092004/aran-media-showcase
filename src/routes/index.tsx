@@ -38,14 +38,12 @@ export const Route = createFileRoute("/")({
 function HomePage() {
   return (
     <SiteLayout>
-      <section className="bg-gradient-navy text-primary-foreground">
-        <div className="container-page grid gap-10 py-12 md:py-16 lg:grid-cols-2 lg:items-center lg:gap-14 lg:py-20">
-          <div className="flex flex-col gap-6">
+<section className="flex h-[calc(100vh-69px)] items-center overflow-hidden bg-gradient-navy-light text-primary-foreground sm:h-[calc(100vh-81px)]">
+  <div className="container-page grid h-full gap-8 py-6 md:py-8 lg:grid-cols-2 lg:items-center lg:gap-10 lg:py-8">          <div className="flex flex-col gap-6">
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-gold">
               {business.name}
             </p>
-            <h1 className="text-4xl sm:text-5xl lg:text-[3.5rem]">
-              Creative Solutions For{" "}
+<h1 className="text-4xl sm:text-5xl lg:text-[3rem] leading-tight">              Creative Solutions For{" "}
               <span className="text-gradient-brand">Every Occasion</span>
             </h1>
             <p className="max-w-xl text-lg leading-relaxed text-primary-foreground/80">
@@ -71,8 +69,7 @@ function HomePage() {
                 </a>
               </Button>
             </div>
-            <ul className="grid gap-4 pt-2 sm:grid-cols-2">
-              {heroTrustPoints.map(({ icon: Icon, title, description }) => (
+<ul className="grid gap-2 pt-1 sm:grid-cols-2">              {heroTrustPoints.map(({ icon: Icon, title, description }) => (
                 <li key={title} className="flex min-w-0 items-start gap-3">
                   <span
                     aria-hidden="true"
@@ -95,8 +92,7 @@ function HomePage() {
               alt="Event stage lit in pink and gold being filmed at dusk with a drone overhead"
               width={1600}
               height={1104}
-              className="h-full w-full rounded-3xl object-cover shadow-e3 sm:col-span-2"
-            />
+className="w-full max-h-[420px] rounded-3xl object-cover shadow-e3 sm:col-span-2"            />
             <img
               src={printImage}
               alt="Colourful banners printed on a large-format press"

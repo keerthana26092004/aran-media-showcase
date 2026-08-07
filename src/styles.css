@@ -107,6 +107,8 @@
 
   --gradient-brand: linear-gradient(135deg, var(--brand), var(--brand-warm));
   --gradient-navy: linear-gradient(160deg, oklch(0.198 0.069 274), oklch(0.28 0.09 278));
+  /* Lighter, more modern blue used on the home hero only */
+  --gradient-navy-light: linear-gradient(160deg, oklch(0.34 0.09 270), oklch(0.46 0.12 268));
   /* Full logo spectrum: red -> orange -> gold -> green -> cyan -> navy blue */
   --gradient-spectrum: linear-gradient(
     90deg,
@@ -175,6 +177,10 @@
 
 @utility bg-gradient-navy {
   background-image: var(--gradient-navy);
+}
+
+@utility bg-gradient-navy-light {
+  background-image: var(--gradient-navy-light);
 }
 
 @utility text-gradient-brand {
