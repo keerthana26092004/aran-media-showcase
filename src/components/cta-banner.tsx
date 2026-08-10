@@ -42,27 +42,22 @@ export function CtaBanner({
       </p>
     </div>
 
-    <div className="flex flex-col items-start gap-3 lg:items-end">
-      <Button asChild size="lg" className="shadow-md">
-        <Link to="/quote">{primaryLabel}</Link>
-      </Button>
+ <div className="flex flex-wrap items-center gap-3 lg:justify-end">
+  <Button asChild size="lg" className="shadow-md">
+    <Link to="/quote">{primaryLabel}</Link>
+  </Button>
 
-      <div className="flex flex-wrap gap-3">
-        <Button asChild variant="onDark">
-          <a href={whatsappLink(`Hello ${business.shortName}, I would like a quotation.`)}>
-            <WhatsAppIcon aria-hidden="true" />
-            WhatsApp us
-          </a>
-        </Button>
-
-        <Button asChild variant="onDark">
-          <a href={business.phoneHref}>
-            <Phone aria-hidden="true" />
-            {business.phoneDisplay}
-          </a>
-        </Button>
-      </div>
-    </div>
+  <Button asChild variant="onDark">
+    <a
+      href={whatsappLink(
+        `Hello ${business.shortName}, I would like a quotation.`
+      )}
+    >
+      <WhatsAppIcon aria-hidden="true" />
+      WhatsApp us
+    </a>
+  </Button>
+</div>
   </div>
 </div>
       </Reveal>
