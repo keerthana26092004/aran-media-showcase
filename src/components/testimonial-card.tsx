@@ -22,7 +22,7 @@ function Rating({ value }: { value: number }) {
 
 export function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
   return (
-    <figure className="flex h-full flex-col gap-4 rounded-2xl border border-border bg-card p-6 shadow-e1">
+    <figure className="flex h-full flex-col gap-4 rounded-2xl border border-border bg-card p-6 shadow-e1 transition-all duration-300 hover:-translate-y-1 hover:shadow-e2">
       <Rating value={testimonial.rating} />
       <blockquote className="flex-1">
         <p className="text-base leading-relaxed text-foreground">“{testimonial.quote}”</p>

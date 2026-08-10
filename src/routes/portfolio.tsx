@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import { CtaBanner } from "@/components/cta-banner";
 import { MediaGallery } from "@/components/media-gallery";
 import { PageBanner } from "@/components/page-banner";
+import { PortfolioShowcase } from "@/components/portfolio-showcase";
 import { SectionHeading } from "@/components/section-heading";
 import { SiteLayout } from "@/components/site-layout";
 import { portfolioCategories, portfolioItems } from "@/data/portfolio";
@@ -30,6 +31,9 @@ export const Route = createFileRoute("/portfolio")({
 
 type Filter = ServiceCategory | "all";
 
+const featuredItem =
+  portfolioItems.find((item) => item.id === "wedding-reception") ?? portfolioItems[0]!;
+
 function PortfolioPage() {
   const [filter, setFilter] = useState<Filter>("all");
 
@@ -46,7 +50,9 @@ function PortfolioPage() {
         description="A selection of recent work across all four service categories. Filter by category, then select a project to view it larger."
       />
 
-      <section aria-labelledby="portfolio-work" className="container-page section-y">
+      <PortfolioShowcase featured={featuredItem} targetId="portfolio-grid" />
+
+      <section id="portfolio-grid" aria-labelledby="portfolio-work" className="container-page section-y">
         <SectionHeading
           id="portfolio-work"
           eyebrow="Selected projects"
@@ -95,10 +101,12 @@ function PortfolioPage() {
         </div>
       </section>
 
-      <CtaBanner
-        title="Want work like this for your project?"
-        description="Send us your requirement and we will share a package built around it."
-      />
+      <div className="pb-16 sm:pb-20 lg:pb-24">
+        <CtaBanner
+          title="Want work like this for your project?"
+          description="Send us your requirement and we will share a package built around it."
+        />
+      </div>
     </SiteLayout>
   );
 }

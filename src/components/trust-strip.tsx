@@ -69,16 +69,16 @@ export function TrustStrip({ items = values, variant = "light" }: TrustStripProp
           key={title}
           className={
             isDark
-              ? "flex flex-col gap-3 rounded-2xl border border-primary-foreground/15 bg-primary-foreground/5 p-6"
-              : "flex flex-col gap-3 rounded-2xl border border-border bg-card p-6 shadow-e1"
+              ? "group flex flex-col gap-3 rounded-2xl border border-primary-foreground/15 bg-primary-foreground/5 p-6 transition-all duration-300 hover:-translate-y-1 hover:bg-primary-foreground/10"
+              : "group flex flex-col gap-3 rounded-2xl border border-border bg-card p-6 shadow-e1 transition-all duration-300 hover:-translate-y-1 hover:shadow-e2"
           }
         >
           <span
             aria-hidden="true"
             className={
               isDark
-                ? "flex size-12 items-center justify-center rounded-xl bg-gold/20 text-gold"
-                : "flex size-12 items-center justify-center rounded-xl bg-gradient-brand text-brand-foreground"
+                ? "flex size-12 items-center justify-center rounded-xl bg-gold/20 text-gold shadow-e1 transition-transform duration-300 group-hover:scale-110"
+                : "flex size-12 items-center justify-center rounded-xl bg-gradient-brand text-brand-foreground shadow-e1 transition-transform duration-300 group-hover:scale-110"
             }
           >
             <Icon className="size-6" />
