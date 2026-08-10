@@ -17,7 +17,7 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-primary-foreground/10 bg-primary text-primary-foreground">
+    <header className="glass-panel sticky top-0 z-50 border-b border-primary-foreground/10 text-primary-foreground shadow-e1 transition-shadow">
       <div className="container-page grid grid-cols-[auto_1fr_auto] items-center gap-4 py-3">
         <Link
           to="/"

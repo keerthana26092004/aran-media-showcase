@@ -47,7 +47,7 @@ export function ServiceCard({ service, featureCount = 4 }: ServiceCardProps) {
   return (
     <article
       aria-labelledby={headingId}
-      className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-e1 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-e2 focus-within:-translate-y-1.5 focus-within:shadow-e2"
+      className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-e1 transition-all duration-300 ease-out hover:-translate-y-2 hover:scale-[1.015] hover:shadow-glow-brand focus-within:-translate-y-2 focus-within:scale-[1.015] focus-within:shadow-glow-brand"
     >
       <div className="aspect-[3/2] overflow-hidden bg-surface-alt">
         <img
@@ -63,7 +63,7 @@ export function ServiceCard({ service, featureCount = 4 }: ServiceCardProps) {
         <div className="flex min-w-0 items-center gap-3">
           <span
             aria-hidden="true"
-            className={`flex size-11 shrink-0 items-center justify-center rounded-full shadow-e1 ${service.accentClass}`}
+            className={`flex size-11 shrink-0 items-center justify-center rounded-full shadow-e1 transition-transform duration-300 group-hover:scale-110 ${service.accentClass}`}
           >
             <Icon className="size-6" />
           </span>
