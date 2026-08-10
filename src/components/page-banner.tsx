@@ -12,8 +12,12 @@ interface PageBannerProps {
 /** Dark navy page header used at the top of every inner page. */
 export function PageBanner({ title, description, eyebrow, children }: PageBannerProps) {
   return (
-    <section className="bg-gradient-navy text-primary-foreground">
-      <div className="container-page py-12 md:py-16 lg:py-20">
+    <section className="relative overflow-hidden bg-gradient-navy text-primary-foreground">
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+        <span className="glow-blob -right-20 -top-24 size-72 bg-brand/25" />
+        <span className="glow-blob -bottom-28 -left-16 size-72 bg-gold/15" />
+      </div>
+      <div className="container-page relative py-12 md:py-16 lg:py-20">
         <nav aria-label="Breadcrumb" className="mb-5">
           <ol className="flex flex-wrap items-center gap-1 text-sm text-primary-foreground/70">
             <li>

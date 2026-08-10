@@ -239,3 +239,133 @@
   border-radius: 999px;
   background-image: var(--gradient-spectrum);
 }
+
+/* ---------------------------------------------------------------- */
+/* Premium 3D-inspired accents: glass surfaces, glow blobs, depth    */
+/* ---------------------------------------------------------------- */
+
+/* Frosted-glass nav / panel surface with a graceful solid fallback */
+@utility glass-panel {
+  background-color: oklch(0.198 0.069 274 / 0.72);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  backdrop-filter: blur(16px) saturate(140%);
+}
+
+/* Soft blurred colour blobs used to build a "gradient mesh" backdrop.
+   Purely decorative — always aria-hidden and pointer-events-none. */
+@utility glow-blob {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(60px);
+  pointer-events: none;
+}
+
+/* Faint dot-grid texture for decorative corners (hero, dark banners) */
+@utility bg-dot-grid {
+  background-image: radial-gradient(currentColor 1.5px, transparent 1.5px);
+  background-size: 22px 22px;
+}
+
+@utility shadow-e4 {
+  box-shadow: 0 24px 64px oklch(0 0 0 / 0.22);
+}
+
+/* Elevated hover shadow used on cards for a "lifted card" premium feel */
+@utility shadow-glow-brand {
+  box-shadow:
+    0 20px 45px oklch(0.603 0.267 350 / 0.18),
+    0 8px 20px oklch(0 0 0 / 0.12);
+}
+
+@keyframes float-slow {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@utility animate-float-slow {
+  animation: float-slow 6s ease-in-out infinite;
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.55;
+  }
+  80%,
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
+@utility animate-pulse-ring {
+  animation: pulse-ring 2.2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Scroll-reveal: elements start faded/translated, then settle once the
+   `is-visible` class is added by the Reveal wrapper's IntersectionObserver. */
+@utility reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(1.25rem);
+  transition:
+    opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@utility reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Gallery bento mosaic: explicit desktop placement for the ten tiles.
+   Written as plain nth-child rules (rather than Tailwind arbitrary
+   properties) because the column/row values are chosen per-tile in JS —
+   Tailwind's static scanner can't see dynamically interpolated class
+   strings, so this stays outside the utility layer. */
+@media (width >= 64rem) {
+  .gallery-mosaic > :nth-child(1) {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+  }
+  .gallery-mosaic > :nth-child(2) {
+    grid-column: 1;
+    grid-row: 3;
+  }
+  .gallery-mosaic > :nth-child(3) {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  .gallery-mosaic > :nth-child(4) {
+    grid-column: 2;
+    grid-row: 2;
+  }
+  .gallery-mosaic > :nth-child(5) {
+    grid-column: 2;
+    grid-row: 3;
+  }
+  .gallery-mosaic > :nth-child(6) {
+    grid-column: 3;
+    grid-row: 1;
+  }
+  .gallery-mosaic > :nth-child(7) {
+    grid-column: 3;
+    grid-row: 2;
+  }
+  .gallery-mosaic > :nth-child(8) {
+    grid-column: 3;
+    grid-row: 3;
+  }
+  .gallery-mosaic > :nth-child(9) {
+    grid-column: 4;
+    grid-row: 1 / span 2;
+  }
+  .gallery-mosaic > :nth-child(10) {
+    grid-column: 4;
+    grid-row: 3;
+  }
+}

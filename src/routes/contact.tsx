@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Clock, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
+import { Clock, Mail, MapPin, Phone } from "lucide-react";
 
+import { WhatsAppIcon } from "@/components/icons/whatsapp-icon";
 import { PageBanner } from "@/components/page-banner";
 import { QuoteForm } from "@/components/quote-form";
 import { SectionHeading } from "@/components/section-heading";
@@ -118,7 +119,7 @@ function ContactPage() {
                   target="_blank"
                   rel="noreferrer noopener"
                 >
-                  <MessageCircle aria-hidden="true" />
+                  <WhatsAppIcon aria-hidden="true" />
                   Chat on WhatsApp
                 </a>
               </Button>

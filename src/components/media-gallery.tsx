@@ -49,17 +49,25 @@ export function MediaGallery({
             <button
               type="button"
               onClick={() => setActiveIndex(index)}
-              className="group flex w-full flex-col overflow-hidden rounded-2xl border border-border bg-card text-left shadow-e1 transition-all duration-300 hover:-translate-y-1 hover:shadow-e2 focus-visible:-translate-y-1"
+              className="group flex w-full flex-col overflow-hidden rounded-2xl border border-border bg-card text-left shadow-e1 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-glow-brand focus-visible:-translate-y-1.5 focus-visible:shadow-glow-brand"
             >
-              <span className="block aspect-[4/3] overflow-hidden bg-surface-alt">
+              <span className="relative block aspect-[4/3] overflow-hidden bg-surface-alt">
                 <img
                   src={item.src}
                   alt={item.alt}
                   width={1200}
                   height={800}
                   loading="lazy"
-                  className="size-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="size-full object-cover transition-transform duration-500 ease-out group-hover:scale-110"
                 />
+                <span
+                  aria-hidden="true"
+                  className="absolute inset-0 flex items-end bg-gradient-to-t from-primary/80 via-primary/0 to-primary/0 p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100"
+                >
+                  <span className="translate-y-2 text-sm font-semibold text-primary-foreground transition-transform duration-300 group-hover:translate-y-0">
+                    View larger
+                  </span>
+                </span>
               </span>
               <span className="flex flex-col gap-1 p-5">
                 <span className="font-display text-lg font-semibold text-foreground">

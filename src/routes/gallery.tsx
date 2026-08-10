@@ -1,6 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useEffect, useRef, useState } from "react";
 
 import { CtaBanner } from "@/components/cta-banner";
+import { GalleryMosaic } from "@/components/gallery-mosaic";
 import { MediaGallery } from "@/components/media-gallery";
 import { PageBanner } from "@/components/page-banner";
 import { SectionHeading } from "@/components/section-heading";
@@ -27,6 +29,15 @@ export const Route = createFileRoute("/gallery")({
 });
 
 function GalleryPage() {
+  const [showFull, setShowFull] = useState(false);
+  const fullGalleryRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    if (showFull) {
+      fullGalleryRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [showFull]);
+
   return (
     <SiteLayout>
       <PageBanner
@@ -35,29 +46,40 @@ function GalleryPage() {
         description="A wider visual record of the events, shoots and print jobs we have delivered recently."
       />
 
-      <section aria-labelledby="gallery-grid" className="container-page section-y">
-        <SectionHeading
-          id="gallery-grid"
-          eyebrow="Recent frames"
-          title="From our latest projects"
-          description="Select any frame to open it in a larger view."
-        />
-        <div className="mt-10">
-          <MediaGallery
-            items={galleryItems.map((item, index) => ({
-              ...item,
-              title: `Frame ${index + 1}`,
-              caption: item.alt,
-            }))}
-            emptyMessage="Our gallery is being updated with fresh work. Please check back soon."
-          />
-        </div>
-      </section>
+      <GalleryMosaic onView={() => setShowFull(true)} />
 
-      <CtaBanner
-        title="Ready to create your own gallery?"
-        description="Book coverage for your next function and receive edited photos, films and prints from one team."
-      />
+      {showFull ? (
+        <section
+          ref={fullGalleryRef}
+          id="full-gallery"
+          aria-labelledby="gallery-grid"
+          className="animate-in fade-in slide-in-from-top-6 container-page section-y duration-700 ease-out"
+        >
+          <SectionHeading
+            id="gallery-grid"
+            eyebrow="Recent frames"
+            title="From our latest projects"
+            description="Select any frame to open it in a larger view."
+          />
+          <div className="mt-10">
+            <MediaGallery
+              items={galleryItems.map((item, index) => ({
+                ...item,
+                title: `Frame ${index + 1}`,
+                caption: item.alt,
+              }))}
+              emptyMessage="Our gallery is being updated with fresh work. Please check back soon."
+            />
+          </div>
+        </section>
+      ) : null}
+
+      <div className="pb-16 sm:pb-20 lg:pb-24">
+        <CtaBanner
+          title="Ready to create your own gallery?"
+          description="Book coverage for your next function and receive edited photos, films and prints from one team."
+        />
+      </div>
     </SiteLayout>
   );
 }

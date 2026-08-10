@@ -87,8 +87,15 @@ function AboutPage() {
         </div>
       </section>
 
-      <section aria-labelledby="about-mission" className="bg-surface">
-        <div className="container-page section-y">
+      <section aria-labelledby="about-mission" className="relative overflow-hidden bg-surface">
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+          <span className="glow-blob animate-float-slow -left-16 -top-20 size-72 bg-brand/10 sm:size-96" />
+          <span
+            className="glow-blob animate-float-slow -bottom-24 -right-16 size-64 bg-gold/12 sm:size-80"
+            style={{ animationDelay: "2s" }}
+          />
+        </div>
+        <div className="container-page relative section-y">
           <SectionHeading
             id="about-mission"
             eyebrow="Mission & values"
@@ -125,15 +132,36 @@ function AboutPage() {
         </div>
       </section>
 
-      <section aria-labelledby="about-why" className="container-page section-y">
-        <SectionHeading id="about-why" eyebrow="Why choose us" title="Four reasons clients stay" />
-        <div className="mt-10">
-          <TrustStrip />
+      <section aria-labelledby="about-why" className="relative overflow-hidden">
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+          <span className="glow-blob animate-float-slow -right-20 -top-16 size-72 bg-info/10 sm:size-96" />
+          <span
+            className="glow-blob animate-float-slow -bottom-20 -left-16 size-64 bg-brand/8 sm:size-80"
+            style={{ animationDelay: "1.5s" }}
+          />
+        </div>
+        <div className="container-page relative section-y">
+          <SectionHeading
+            id="about-why"
+            eyebrow="Why choose us"
+            title="Four reasons clients stay"
+          />
+          <div className="mt-10">
+            <TrustStrip />
+          </div>
         </div>
       </section>
 
-      <section aria-labelledby="about-team" className="bg-surface">
-        <div className="container-page section-y">
+      <section aria-labelledby="about-team" className="relative overflow-hidden bg-surface">
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+          <span className="glow-blob animate-float-slow -left-20 top-0 size-72 bg-violet/10 sm:size-96" />
+          <span
+            className="glow-blob animate-float-slow -bottom-24 -right-20 size-64 bg-gold/10 sm:size-80"
+            style={{ animationDelay: "2.5s" }}
+          />
+          <span className="bg-dot-grid absolute right-8 top-10 hidden size-32 text-foreground/[0.06] [mask-image:radial-gradient(circle,black,transparent_75%)] lg:block" />
+        </div>
+        <div className="container-page relative section-y">
           <SectionHeading
             id="about-team"
             eyebrow="The team"
@@ -168,20 +196,16 @@ function AboutPage() {
               </li>
             ))}
           </ul>
-          <p className="mt-8 text-base text-muted-foreground">
-            Visit us at {fullAddress} or call{" "}
-            <a href={business.phoneHref} className="font-semibold text-brand hover:underline">
-              {business.phoneDisplay}
-            </a>{" "}
-            to meet the team.
-          </p>
+         
         </div>
       </section>
 
-      <CtaBanner
-        title="Let's plan your next project together"
-        description="Share your requirement and we will suggest the right combination of media and print services."
-      />
+      <div className="pb-16 sm:pb-20 lg:pb-24">
+        <CtaBanner
+          title="Let's plan your next project together"
+          description="Share your requirement and we will suggest the right combination of media and print services."
+        />
+      </div>
     </SiteLayout>
   );
 }
