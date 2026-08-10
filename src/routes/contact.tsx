@@ -71,11 +71,13 @@ function ContactPage() {
           eyebrow="Get in touch"
           title="We are one call away"
         />
-        <div className="mt-10 grid gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)]">
-          <QuoteForm
-            title="Send us an enquiry"
-            description="Share a few details about your requirement and our team will respond with pricing."
-          />
+<div className="mt-8 grid items-start gap-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)]">      
+     <div className="self-start">
+  <QuoteForm
+    title="Send us an enquiry"
+    description="Share a few details about your requirement and our team will respond with pricing."
+  />
+</div>
 
           <div className="flex flex-col gap-6">
             <ul className="flex flex-col gap-4">
