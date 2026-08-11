@@ -241,7 +241,7 @@ export function SiteFooter() {
         rel="noreferrer noopener"
         className="font-semibold text-primary-foreground transition-colors hover:text-gold"
       >
-        DeepWebStudio
+        Deep Web Studio
       </a>
     </p>
 
