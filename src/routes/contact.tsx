@@ -4,6 +4,7 @@ import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import { WhatsAppIcon } from "@/components/icons/whatsapp-icon";
 import { PageBanner } from "@/components/page-banner";
 import { QuoteForm } from "@/components/quote-form";
+import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { SiteLayout } from "@/components/site-layout";
 import { Button } from "@/components/ui/button";
@@ -64,95 +65,110 @@ function ContactPage() {
         description="Visit the studio on Bye Pass Road, call us, or send an enquiry and we will get back to you the same working day."
       />
 
-      <section aria-labelledby="contact-main" className="container-page section-y">
-        <SectionHeading
-          id="contact-main"
-          align="left"
-          eyebrow="Get in touch"
-          title="We are one call away"
-        />
-<div className="mt-8 grid items-start gap-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)]">      
-     <div className="self-start">
-  <QuoteForm
-    title="Send us an enquiry"
-    description="Share a few details about your requirement and our team will respond with pricing."
-  />
-</div>
+      <section aria-labelledby="contact-main" className="relative overflow-hidden bg-surface">
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+          <span className="glow-blob animate-float-slow -left-20 -top-24 size-72 bg-brand/8 sm:size-96" />
+          <span
+            className="glow-blob animate-float-slow -bottom-24 -right-16 size-64 bg-info/10 sm:size-80"
+            style={{ animationDelay: "2s" }}
+          />
+        </div>
 
-          <div className="flex flex-col gap-6">
-            <ul className="flex flex-col gap-4">
-              {details.map(({ icon: Icon, label, value, href }) => (
-                <li
-                  key={label}
-                  className="flex min-w-0 gap-4 rounded-2xl border border-border bg-card p-5 shadow-e1"
-                >
-                  <span
-                    aria-hidden="true"
-                    className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-brand/10 text-brand"
+        <div className="container-page relative section-y">
+          <Reveal>
+            <SectionHeading
+              id="contact-main"
+              align="left"
+              eyebrow="Get in touch"
+              title="We are one call away"
+            />
+          </Reveal>
+
+          <div className="mt-8 grid items-start gap-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)]">
+            <Reveal className="self-start">
+              <QuoteForm
+                title="Send us an enquiry"
+                description="Share a few details about your requirement and our team will respond with pricing."
+              />
+            </Reveal>
+
+            <Reveal delay={120} className="flex flex-col gap-6">
+              <ul className="flex flex-col gap-4">
+                {details.map(({ icon: Icon, label, value, href }) => (
+                  <li
+                    key={label}
+                    className="flex min-w-0 gap-4 rounded-2xl border border-border bg-card p-5 shadow-e1 transition-all duration-300 hover:-translate-y-1 hover:shadow-e2"
                   >
-                    <Icon className="size-5" />
-                  </span>
-                  <span className="min-w-0">
-                    <span className="block text-sm font-semibold uppercase tracking-wide text-muted-foreground">
-                      {label}
+                    <span
+                      aria-hidden="true"
+                      className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-gradient-brand text-brand-foreground shadow-e1"
+                    >
+                      <Icon className="size-5" />
                     </span>
-                    {href ? (
-                      <a
-                        href={href}
-                        className="break-words font-medium text-foreground hover:text-brand hover:underline"
-                        {...(href.startsWith("http")
-                          ? { target: "_blank", rel: "noreferrer noopener" }
-                          : {})}
-                      >
-                        {value}
-                      </a>
-                    ) : (
-                      <span className="block break-words font-medium text-foreground">{value}</span>
-                    )}
-                  </span>
-                </li>
-              ))}
-            </ul>
+                    <span className="min-w-0">
+                      <span className="block text-sm font-semibold uppercase tracking-wide text-muted-foreground">
+                        {label}
+                      </span>
+                      {href ? (
+                        <a
+                          href={href}
+                          className="break-words font-medium text-foreground hover:text-brand hover:underline"
+                          {...(href.startsWith("http")
+                            ? { target: "_blank", rel: "noreferrer noopener" }
+                            : {})}
+                        >
+                          {value}
+                        </a>
+                      ) : (
+                        <span className="block break-words font-medium text-foreground">
+                          {value}
+                        </span>
+                      )}
+                    </span>
+                  </li>
+                ))}
+              </ul>
 
-            <div className="flex flex-wrap gap-3">
-              <Button asChild>
+              <div className="flex flex-wrap gap-3">
+                <Button asChild>
+                  <a
+                    href={whatsappLink("Hello, I would like to know more about your services.")}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                  >
+                    <WhatsAppIcon aria-hidden="true" />
+                    Chat on WhatsApp
+                  </a>
+                </Button>
+                <Button asChild variant="navy">
+                  <a href={business.phoneHref}>
+                    <Phone aria-hidden="true" />
+                    Call now
+                  </a>
+                </Button>
+              </div>
+
+              <div className="flex flex-col gap-3">
+                <h3 className="text-xl text-foreground">Find us in Harur</h3>
+                <div className="overflow-hidden rounded-2xl border border-border shadow-e1 ring-1 ring-border transition-shadow duration-300 hover:shadow-e2">
+                  <iframe
+                    title={`Google Map showing the location of ${business.name} in Harur`}
+                    src={business.mapEmbedSrc}
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    className="h-72 w-full border-0"
+                  />
+                </div>
                 <a
-                  href={whatsappLink("Hello, I would like to know more about your services.")}
+                  href={business.mapLink}
                   target="_blank"
                   rel="noreferrer noopener"
+                  className="text-sm font-semibold text-brand hover:underline"
                 >
-                  <WhatsAppIcon aria-hidden="true" />
-                  Chat on WhatsApp
+                  Open directions in Google Maps
                 </a>
-              </Button>
-              <Button asChild variant="navy">
-                <a href={business.phoneHref}>
-                  <Phone aria-hidden="true" />
-                  Call now
-                </a>
-              </Button>
-            </div>
-
-            <div className="flex flex-col gap-3">
-              <h3 className="text-xl text-foreground">Find us in Harur</h3>
-              <div className="overflow-hidden rounded-2xl border border-border shadow-e1">
-                <iframe
-                  title={`Google Map showing the location of ${business.name} in Harur`}
-                  src={business.mapEmbedSrc}
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  className="h-72 w-full border-0"
-                />
               </div>
-              <a
-                href={business.mapLink}
-                target="_blank"
-                rel="noreferrer noopener"
-                className="text-sm font-semibold text-brand hover:underline"
-              >
-                Open directions in Google Maps
-              </a>
-            </div>
+            </Reveal>
           </div>
         </div>
       </section>
