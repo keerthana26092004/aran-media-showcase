@@ -58,6 +58,7 @@ export function QuoteForm({
   showBudget = false,
 }: QuoteFormProps) {
   const [submitted, setSubmitted] = useState<QuoteValues | null>(null);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const {
     register,
     handleSubmit,
@@ -69,11 +70,34 @@ export function QuoteForm({
   });
 
   const onSubmit = async (values: QuoteValues) => {
-    // No backend is connected yet: the enquiry is confirmed on screen and the
-    // visitor is offered a pre-filled WhatsApp message to reach the team.
-    await new Promise((resolve) => setTimeout(resolve, 500));
-    setSubmitted(values);
-    reset();
+    setSubmitError(null);
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: import.meta.env["VITE_WEB3FORMS_ACCESS_KEY"],
+          subject: `New enquiry: ${values.service} — ${business.name} website`,
+          from_name: values.name,
+          name: values.name,
+          email: values.email || undefined,
+          phone: values.phone,
+          service: values.service,
+          budget: values.budget || undefined,
+          message: values.message,
+        }),
+      });
+      const result = await response.json();
+      if (!response.ok || !result.success) {
+        throw new Error(result.message || "The enquiry could not be sent.");
+      }
+      setSubmitted(values);
+      reset();
+    } catch {
+      setSubmitError(
+        "We could not send your enquiry right now. Please try again, or reach us directly on WhatsApp or by phone below.",
+      );
+    }
   };
 
   const fieldClass =
@@ -240,6 +264,12 @@ export function QuoteForm({
           ) : null}
         </div>
       </div>
+
+      {submitError ? (
+        <p role="alert" className="text-sm font-medium text-destructive">
+          {submitError}
+        </p>
+      ) : null}
 
       <div className="flex flex-wrap items-center gap-4">
         <Button type="submit" disabled={isSubmitting}>
