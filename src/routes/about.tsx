@@ -39,7 +39,7 @@ function AboutPage() {
   return (
     <SiteLayout>
       <PageBanner
-        title="About Aran Media & Digital Printing"
+        title="About Aran Media"
         eyebrow="About Us"
         description="A Harur-based media and print house bringing photography, videography, drone coverage, event management and printing under one roof."
       />
