@@ -322,6 +322,26 @@
   transform: translateY(0);
 }
 
+/* Continuous right-to-left testimonial marquee. The track holds the
+   testimonial list twice back-to-back, so animating from 0% to -50%
+   loops seamlessly while visually moving the cards leftward. */
+@keyframes marquee-rtl {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@utility animate-marquee-rtl {
+  animation: marquee-rtl 36s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
 /* Gallery bento mosaic: explicit desktop placement for the ten tiles.
    Written as plain nth-child rules (rather than Tailwind arbitrary
    properties) because the column/row values are chosen per-tile in JS —

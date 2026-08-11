@@ -23,6 +23,8 @@ import { SectionHeading } from "@/components/section-heading";
 import { ServiceCard } from "@/components/service-card";
 import { SiteLayout } from "@/components/site-layout";
 import { TestimonialCard } from "@/components/testimonial-card";
+import { TestimonialMarquee } from "@/components/testimonial-marquee";
+import { TrustStrip } from "@/components/trust-strip";
 import { Button } from "@/components/ui/button";
 import { testimonials } from "@/data/content";
 import { services } from "@/data/services";
@@ -198,6 +200,8 @@ function HomePage() {
         </div>
       </section>
 
+      <TestimonialMarquee />
+
       <section aria-labelledby="home-services" className="container-page section-y">
         <Reveal>
           <SectionHeading
@@ -228,34 +232,13 @@ function HomePage() {
               description="Clients come back because the process is predictable: clear quotations, approved proofs and delivery on the promised date."
             />
           </Reveal>
-         
+          <div className="mt-10">
+            <TrustStrip />
+          </div>
         </div>
       </section>
 
-      <section aria-labelledby="home-testimonials" className="container-page section-y">
-        <Reveal>
-          <SectionHeading
-            id="home-testimonials"
-            eyebrow="Client stories"
-            title="What our customers say"
-          />
-        </Reveal>
-        <ul className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {testimonials.slice(0, 3).map((testimonial, index) => (
-            <Reveal key={testimonial.id} as="li" delay={index * 80} className="flex">
-              <TestimonialCard testimonial={testimonial} />
-            </Reveal>
-          ))}
-        </ul>
-        <div className="mt-8 flex justify-center">
-          <Button asChild variant="outline">
-            <Link to="/testimonials">
-              Read all testimonials
-              <ArrowRight aria-hidden="true" />
-            </Link>
-          </Button>
-        </div>
-      </section>
+      
     </SiteLayout>
   );
 }
