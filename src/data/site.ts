@@ -20,9 +20,9 @@ export const business = {
   mapLink:
     "https://www.google.com/maps/search/?api=1&query=Bye+Pass+Road+opp+State+Bank+of+India+Varnathirutha+Harur+Tamil+Nadu+636903",
   social: [
-    { label: "Facebook", href: "https://www.facebook.com/", icon: "facebook" },
-    { label: "Instagram", href: "https://www.instagram.com/", icon: "instagram" },
-    { label: "YouTube", href: "https://www.youtube.com/", icon: "youtube" },
+    { label: "Facebook", href: "https://www.facebook.com/share/1Bhhy3yDj8/?mibextid=wwXIfr", icon: "facebook" },
+    { label: "Instagram", href: "https://www.instagram.com/aranmediaa?igsh=MThybTRscDFzbXZ6", icon: "instagram" },
+    { label: "YouTube", href: "https://youtube.com/@aranmediaa?si=jbachsnjt9WIdMND", icon: "youtube" },
     
   ],
 } as const;
