@@ -1,10 +1,16 @@
 import { Link } from "@tanstack/react-router";
-import { Phone, Sparkles } from "lucide-react";
-
 import { WhatsAppIcon } from "@/components/icons/whatsapp-icon";
 import { Reveal } from "@/components/reveal";
 import { Button } from "@/components/ui/button";
 import { business, whatsappLink } from "@/data/site";
+
+import eventsImage from "@/assets/service-events.jpg";
+import droneImage from "@/assets/service-drone.jpg";
+import ctaBg from "@/assets/cta-bg.jpg";
+import printImage from "@/assets/service-print.jpg";
+import videoImage from "@/assets/service-video.jpg";
+import celebrationImage from "@/assets/gallery-celebration.jpg";
+import heroImage from "@/assets/hero-media.jpg";
 
 interface CtaBannerProps {
   title?: string;
@@ -23,43 +29,123 @@ export function CtaBanner({
       <Reveal className="relative">
         <div
           aria-hidden="true"
-          className="absolute -inset-3 -z-10 hidden rotate-1 rounded-[2.5rem] bg-gradient-brand opacity-25 blur-md sm:block"
+          className="pointer-events-none absolute -inset-6 -z-10 hidden rounded-[3rem] bg-gradient-brand opacity-15 blur-2xl sm:block"
         />
-<div className="relative overflow-hidden rounded-[2rem] rounded-tr-[4.5rem] bg-gradient-navy px-6 pb-10 pt-12 text-primary-foreground shadow-lg sm:rounded-tr-[6rem] sm:pt-14 md:px-12 md:pb-14">
-  <div aria-hidden="true" className="pointer-events-none absolute inset-0">
-    <span className="bg-dot-grid absolute bottom-4 right-8 hidden size-28 text-primary-foreground/10 [mask-image:radial-gradient(circle,black,transparent_75%)] lg:block" />
-    <span className="absolute inset-0 rounded-[inherit] ring-1 ring-inset ring-primary-foreground/10" />
-  </div>
 
- 
+        <div
+          className="relative grid gap-6 overflow-hidden rounded-[2.5rem] px-6 py-10 shadow-e4 sm:px-10 sm:py-12 lg:grid-cols-[1.1fr_1fr] lg:items-center lg:gap-3 lg:overflow-visible h-85"
+          style={{
+  backgroundImage: `url(${ctaBg})`,
+  backgroundSize: "cover",
+  backgroundPosition: "center bottom",
+}}
+        >
+          {/* Content */}
+          <div className="relative z-10 flex flex-col gap-5 lg:py-8">
+            <h2 className="text-2xl text-foreground sm:text-3xl lg:text-4xl text-white">
+              {title}
+            </h2>
 
-  <div className="relative flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
-    <div className="flex max-w-xl flex-col gap-3">
-      <span aria-hidden="true" className="h-1.5 w-14 rounded-full bg-gradient-brand" />
-      <h2 className="text-2xl sm:text-3xl lg:text-4xl">{title}</h2>
-      <p className="text-base text-primary-foreground/80 sm:text-lg">
-        {description}
-      </p>
-    </div>
+            <p className="max-w-md text-base text-muted-foreground sm:text-lg text-white">
+              {description}
+            </p>
 
- <div className="flex flex-wrap items-center gap-3 lg:justify-end">
-  <Button asChild size="lg" className="shadow-md">
-    <Link to="/quote">{primaryLabel}</Link>
-  </Button>
+            <div className="flex flex-wrap items-center gap-3">
+              <Button asChild size="lg" className="shadow-glow-brand">
+                <Link to="/quote">{primaryLabel}</Link>
+              </Button>
 
-  <Button asChild variant="onDark">
-    <a
-      href={whatsappLink(
-        `Hello ${business.shortName}, I would like a quotation.`
-      )}
-    >
-      <WhatsAppIcon aria-hidden="true" />
-      WhatsApp us
-    </a>
-  </Button>
-</div>
-  </div>
-</div>
+              <Button asChild variant="outline">
+                <a
+                  href={whatsappLink(
+                    `Hello ${business.shortName}, I would like a quotation.`,
+                  )}
+                >
+                  <WhatsAppIcon aria-hidden="true" />
+                  WhatsApp us
+                </a>
+              </Button>
+            </div>
+          </div>
+
+          {/* Mobile / Tablet */}
+          <div className="relative grid grid-cols-3 gap-1.5 lg:hidden">
+            <div className="overflow-hidden rounded-xl border-4 border-white bg-white shadow-e3">
+              <img
+                src={eventsImage}
+                alt="Wedding reception stage decorated with floral arches"
+                width={480}
+                height={480}
+                loading="lazy"
+                className="aspect-square w-full object-cover"
+              />
+            </div>
+
+            <div className="overflow-hidden rounded-xl border-4 border-white bg-white shadow-e3">
+              <img
+                src={droneImage}
+                alt="Aerial view of a temple town and river at golden hour"
+                width={480}
+                height={480}
+                loading="lazy"
+                className="aspect-square w-full object-cover"
+              />
+            </div>
+
+            <div className="overflow-hidden rounded-xl border-4 border-white bg-white p-3 shadow-e3">
+              <img
+                src="/Aran%20media%20logo.png"
+                alt={`${business.name} logo`}
+                width={1024}
+                height={411}
+                loading="lazy"
+                className="aspect-square w-full object-contain"
+              />
+            </div>
+          </div>
+
+          {/* Desktop collage */}
+          <div className="relative hidden lg:block lg:min-h-[18rem]">
+            {/* Image 1 */}
+            <div className="absolute left-10 top-1/2 w-36 -translate-y-1/2 -rotate-6 overflow-hidden rounded-xl border-4 border-white bg-white shadow-e3 transition-transform duration-500 hover:rotate-0 xl:left-14 xl:w-40">
+              <img
+                src={eventsImage}
+                alt="Wedding reception stage decorated with floral arches"
+                width={480}
+                height={480}
+                loading="lazy"
+                className="aspect-square w-full object-cover"
+              />
+            </div>
+
+            {/* Image 2 */}
+            <div className="absolute left-[40%] top-1/2 w-36 -translate-y-1/2 rotate-3 overflow-hidden rounded-xl border-4 border-white bg-white shadow-e3 transition-transform duration-500 hover:rotate-0 xl:w-40">
+              <img
+                src={droneImage}
+                alt="Aerial view of a temple town and river at golden hour"
+                width={480}
+                height={480}
+                loading="lazy"
+                className="aspect-square w-full object-cover"
+              />
+            </div>
+
+            
+            
+
+            {/* Logo */}
+            <div className="absolute right-8 top-1/2 w-32 -translate-y-1/2 rotate-6 overflow-hidden rounded-xl border-4 border-white bg-white p-3 shadow-e3 transition-transform duration-500 hover:rotate-0 xl:right-12 xl:w-36">
+              <img
+                src="/Aran%20media%20logo.png"
+                alt={`${business.name} logo`}
+                width={1024}
+                height={411}
+                loading="lazy"
+                className="aspect-square w-full object-contain"
+              />
+            </div>
+          </div>
+        </div>
       </Reveal>
     </section>
   );
