@@ -22,23 +22,31 @@ function Rating({ value }: { value: number }) {
 
 export function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
   return (
-    <figure className="flex h-full flex-col gap-4 rounded-2xl border border-border bg-card p-6 shadow-e1 transition-all duration-300 hover:-translate-y-1 hover:shadow-e2">
-      <Rating value={testimonial.rating} />
-      <blockquote className="flex-1">
-        <p className="text-base leading-relaxed text-foreground">“{testimonial.quote}”</p>
-      </blockquote>
-      <figcaption className="flex min-w-0 items-center gap-3 border-t border-border pt-4">
+    <figure className="flex h-full flex-col overflow-visible rounded-2xl border border-border bg-card shadow-e1 transition-all duration-300 hover:-translate-y-1 hover:shadow-e2">
+      <div className="relative mx-4 mt-4 flex items-center gap-3 rounded-xl bg-gradient-navy px-4 py-3 pr-14 text-primary-foreground shadow-e1">
+        <span className="min-w-0">
+          <span className="block truncate font-semibold text-primary-foreground">
+            {testimonial.name}
+          </span>
+          <span className="block truncate text-sm text-primary-foreground/75">
+            {testimonial.role}
+          </span>
+        </span>
+
         <span
           aria-hidden="true"
-          className="flex size-11 shrink-0 items-center justify-center rounded-full bg-gradient-brand text-sm font-semibold text-brand-foreground"
+          className="absolute -right-3 -top-3 flex size-14 shrink-0 items-center justify-center rounded-full bg-gradient-brand text-base font-semibold text-brand-foreground ring-4 ring-card"
         >
           {testimonial.initials}
         </span>
-        <span className="min-w-0">
-          <span className="block truncate font-semibold text-foreground">{testimonial.name}</span>
-          <span className="block truncate text-sm text-muted-foreground">{testimonial.role}</span>
-        </span>
-      </figcaption>
+      </div>
+
+      <div className="flex flex-1 flex-col gap-4 p-6 pt-5">
+        <Rating value={testimonial.rating} />
+        <blockquote className="flex-1">
+          <p className="text-base leading-relaxed text-foreground">“{testimonial.quote}”</p>
+        </blockquote>
+      </div>
     </figure>
   );
 }
