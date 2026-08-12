@@ -1,32 +1,27 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import {
-  ArrowRight,
-  Camera,
-  Clock,
-  Drone,
-  LayoutGrid,
-  MapPin,
-  PartyPopper,
-  Printer,
-  Star,
-  Users,
-} from "lucide-react";
+import { ArrowRight, Camera, Drone, PartyPopper, Printer } from "lucide-react";
 
 import heroImage from "@/assets/hero-media.jpg";
 import printImage from "@/assets/service-print.jpg";
 import eventsImage from "@/assets/service-events.jpg";
 import videoImage from "@/assets/service-video.jpg";
 import { CtaBanner } from "@/components/cta-banner";
+import { GalleryShowcase } from "@/components/gallery-showcase";
 import { WhatsAppIcon } from "@/components/icons/whatsapp-icon";
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { ServiceCard } from "@/components/service-card";
 import { SiteLayout } from "@/components/site-layout";
-import { TestimonialCard } from "@/components/testimonial-card";
 import { TestimonialMarquee } from "@/components/testimonial-marquee";
 import { TrustStrip } from "@/components/trust-strip";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
-import { testimonials } from "@/data/content";
+import { faqs } from "@/data/content";
 import { services } from "@/data/services";
 import { business, whatsappLink } from "@/data/site";
 
@@ -190,17 +185,42 @@ function HomePage() {
               </ul>
             </div>
           </div>
-
-         
-
-          <div className="mt-10 flex flex-col gap-8 sm:mt-12 lg:flex-row lg:items-center lg:justify-between">
-            
-           
-          </div>
         </div>
       </section>
 
-      <TestimonialMarquee />
+      <section aria-labelledby="home-about" className="container-page section-y">
+        <Reveal className="grid gap-10 lg:grid-cols-2 lg:items-center lg:gap-14">
+          <div className="flex flex-col gap-4">
+            <SectionHeading
+              id="home-about"
+              align="left"
+              eyebrow="About Us"
+              title="One studio, every part of your project"
+            />
+            <p className="text-base leading-relaxed text-muted-foreground sm:text-lg">
+              Aran Media & Digital Printing — brings photography,
+              videography, drone coverage, event management and printing under one roof in Harur,
+              so you never have to coordinate between vendors.
+            </p>
+            <div>
+              <Button asChild variant="outline">
+                <Link to="/about">
+                  Learn more about us
+                  <ArrowRight aria-hidden="true" />
+                </Link>
+              </Button>
+            </div>
+          </div>
+          <img
+            src={eventsImage}
+            alt="Aran Media decorated wedding reception stage with floral arches"
+            width={1200}
+            height={800}
+            loading="lazy"
+            className="w-full rounded-3xl object-cover shadow-e3"
+          />
+        </Reveal>
+      </section>
 
       <section aria-labelledby="home-services" className="container-page section-y">
         <Reveal>
@@ -220,7 +240,7 @@ function HomePage() {
         </ul>
       </section>
 
-      <CtaBanner />
+      <GalleryShowcase />
 
       <section aria-labelledby="home-why" className="bg-surface">
         <div className="container-page section-y">
@@ -238,7 +258,46 @@ function HomePage() {
         </div>
       </section>
 
-      
+      <TestimonialMarquee />
+
+      <section aria-labelledby="home-faq" className="container-page section-y">
+        <Reveal>
+          <SectionHeading
+            id="home-faq"
+            eyebrow="FAQ"
+            title="Common questions, answered"
+            description="A few things clients often ask before booking. See the full list for more."
+          />
+        </Reveal>
+        <div className="mx-auto mt-10 max-w-3xl">
+          <Accordion type="single" collapsible className="flex flex-col gap-3">
+            {faqs.slice(0, 4).map((faq) => (
+              <AccordionItem
+                key={faq.id}
+                value={faq.id}
+                className="rounded-2xl border border-border bg-card px-5 shadow-e1"
+              >
+                <AccordionTrigger className="py-5 text-left font-display text-lg font-semibold hover:no-underline">
+                  {faq.question}
+                </AccordionTrigger>
+                <AccordionContent className="pb-5 text-base leading-relaxed text-muted-foreground">
+                  {faq.answer}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+          <div className="mt-8 flex justify-center">
+            <Button asChild variant="outline">
+              <Link to="/faq">
+                View all FAQs
+                <ArrowRight aria-hidden="true" />
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      <CtaBanner />
     </SiteLayout>
   );
 }
