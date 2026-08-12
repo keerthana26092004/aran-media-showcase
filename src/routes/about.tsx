@@ -54,7 +54,7 @@ function AboutPage() {
               title="One studio, every part of your project"
             />
             <p className="text-base leading-relaxed text-muted-foreground sm:text-lg">
-              Aran Media & Digital Printing — known locally as Aran Elan — started as a small print
+              Aran Media & Digital Printing — started as a small print
               counter on Bye Pass Road and grew into a full media house as customers kept asking for
               photography, video and decor alongside their printing.
             </p>
@@ -63,18 +63,40 @@ function AboutPage() {
               flies the drone and edits the film. That single point of accountability is why families,
               shops, schools and campaign teams across Dharmapuri district keep coming back.
             </p>
-            <dl className="mt-2 grid grid-cols-2 gap-4 sm:grid-cols-4">
-              {milestones.map((item) => (
-                <div
-                  key={item.label}
-                  className="flex flex-col gap-1 rounded-2xl border border-border bg-card p-4 shadow-e1"
-                >
-                  <dt className="sr-only">{item.label}</dt>
-                  <dd className="font-display text-2xl font-bold text-brand">{item.value}</dd>
-                  <p className="text-sm text-muted-foreground">{item.label}</p>
-                </div>
-              ))}
-            </dl>
+           <dl className="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-4">
+  {milestones.map((item, index) => (
+    <div
+      key={item.label}
+      className="group relative overflow-hidden rounded-2xl border border-border bg-card/80 p-5 shadow-e1 backdrop-blur-sm transition-all duration-300 hover:-translate-y-2 hover:border-brand/20 hover:shadow-e3"
+    >
+      {/* Soft decorative glow */}
+      <span
+        aria-hidden="true"
+        className={`absolute -right-10 -top-10 size-24 rounded-full blur-3xl transition-transform duration-500 group-hover:scale-150 ${
+          index % 2 === 0 ? "bg-brand/15" : "bg-gold/15"
+        }`}
+      />
+
+      {/* Number */}
+      <dd className="relative font-display text-3xl font-bold tracking-tight text-foreground transition-transform duration-300 group-hover:scale-105 sm:text-4xl">
+        {item.value}
+      </dd>
+
+      {/* Label */}
+      <dt className="relative mt-2 text-sm font-medium leading-snug text-muted-foreground">
+        {item.label}
+      </dt>
+
+      {/* Small decorative dot */}
+      <span
+        aria-hidden="true"
+        className={`absolute bottom-4 right-4 size-2 rounded-full opacity-50 transition-all duration-300 group-hover:scale-150 group-hover:opacity-100 ${
+          index % 2 === 0 ? "bg-brand" : "bg-gold"
+        }`}
+      />
+    </div>
+  ))}
+</dl>
           </div>
           <img
             src={eventsImage}
