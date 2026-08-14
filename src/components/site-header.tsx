@@ -41,8 +41,7 @@ export function SiteHeader() {
                   to={item.to}
                   className={linkBase}
                   activeProps={{
-                    className:
-                      "text-gold font-semibold border-b-2 border-gold rounded-none pb-0.5",
+                    className: "text-gold font-semibold border-b-2 border-gold rounded-none pb-0.5",
                   }}
                   activeOptions={{ exact: item.to === "/" }}
                 >

@@ -29,38 +29,36 @@ export function CtaBanner({
       <Reveal className="relative">
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute -inset-6 -z-10 hidden rounded-[3rem] bg-gradient-brand opacity-15 blur-2xl sm:block"
+          className="pointer-events-none absolute -inset-2 -z-10 hidden rounded-[3rem] bg-gradient-brand opacity-15 blur-2xl sm:block"
         />
 
         <div
           className="relative grid gap-6 overflow-hidden rounded-[2.5rem] px-6 py-10 shadow-e4 sm:px-10 sm:py-12 lg:grid-cols-[1.1fr_1fr] lg:items-center lg:gap-3 lg:overflow-visible h-85"
           style={{
-  backgroundImage: `url(${ctaBg})`,
-  backgroundSize: "cover",
-  backgroundPosition: "center bottom",
-}}
+            backgroundImage: `url(${ctaBg})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center bottom",
+          }}
         >
           {/* Content */}
           <div className="relative z-10 flex flex-col gap-5 lg:py-8">
-            <h2 className="text-2xl text-foreground sm:text-3xl lg:text-4xl text-white">
-              {title}
-            </h2>
+            <h2 className="text-2xl text-foreground sm:text-3xl lg:text-4xl text-white">{title}</h2>
 
             <p className="max-w-md text-base text-muted-foreground sm:text-lg text-white">
               {description}
             </p>
 
             <div className="flex flex-wrap items-center gap-3">
-              <Button asChild size="lg" className="shadow-glow-brand">
+              <Button
+                asChild
+                size="lg"
+                className="whitespace-normal text-center shadow-glow-brand sm:whitespace-nowrap"
+              >
                 <Link to="/quote">{primaryLabel}</Link>
               </Button>
 
               <Button asChild variant="outline">
-                <a
-                  href={whatsappLink(
-                    `Hello ${business.shortName}, I would like a quotation.`,
-                  )}
-                >
+                <a href={whatsappLink(`Hello ${business.shortName}, I would like a quotation.`)}>
                   <WhatsAppIcon aria-hidden="true" />
                   WhatsApp us
                 </a>
@@ -129,9 +127,6 @@ export function CtaBanner({
                 className="aspect-square w-full object-cover"
               />
             </div>
-
-            
-            
 
             {/* Logo */}
             <div className="absolute right-8 top-1/2 w-32 -translate-y-1/2 rotate-6 overflow-hidden rounded-xl border-4 border-white bg-white p-3 shadow-e3 transition-transform duration-500 hover:rotate-0 xl:right-12 xl:w-36">

@@ -52,8 +52,6 @@ const showcaseAccent = {
   gold: { ring: "ring-gold", badge: "bg-gold text-gold-foreground" },
 } as const;
 
-
-
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
@@ -77,7 +75,9 @@ export const Route = createFileRoute("/")({
 function HomePage() {
   return (
     <SiteLayout>
-<section className="relative flex min-h-screen items-center overflow-hidden bg-gradient-navy-light text-primary-foreground">        <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+      <section className="relative flex min-h-screen items-center overflow-hidden bg-gradient-navy-light text-primary-foreground">
+        {" "}
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0">
           <span className="glow-blob animate-float-slow -left-24 -top-24 size-72 bg-brand/30 sm:size-96" />
           <span
             className="glow-blob animate-float-slow right-[-4rem] top-1/3 size-64 bg-gold/25 sm:size-80"
@@ -88,10 +88,9 @@ function HomePage() {
             style={{ animationDelay: "3s" }}
           />
         </div>
-
-<div className="container-page relative py-6 md:py-8 lg:py-10">        
-<div className="grid gap-8 lg:grid-cols-2 lg:items-center lg:gap-8">          
-    <div className="flex flex-col gap-4">
+        <div className="container-page relative py-6 md:py-8 lg:py-10">
+          <div className="grid gap-8 lg:grid-cols-2 lg:items-center lg:gap-8">
+            <div className="flex flex-col gap-4">
               <p className="text-sm font-semibold uppercase tracking-[0.18em] text-gold">
                 {business.name}
               </p>
@@ -123,7 +122,6 @@ function HomePage() {
                   </a>
                 </Button>
               </div>
-              
             </div>
 
             <div className="relative pb-8 pr-4 pt-4">
@@ -147,14 +145,14 @@ function HomePage() {
                 <span className="sr-only">Aerial drone coverage</span>
               </div>
 
-              <ul className="relative z-10 -mt-10 flex justify-center gap-3 px-2 sm:-mt-20 sm:gap-4">
+              <ul className="relative z-10 -mt-10 flex flex-wrap justify-center gap-2 px-2 sm:-mt-20 sm:flex-nowrap sm:gap-4">
                 {heroShowcase.map((item, index) => {
                   const accent = showcaseAccent[item.accent];
                   const tilt = index === 0 ? "-rotate-3" : index === 2 ? "rotate-3" : "rotate-0";
                   return (
                     <li
                       key={item.label}
-                      className={`w-28 shrink-0 sm:w-40 lg:w-44 ${
+                      className={`w-24 shrink-0 sm:w-40 lg:w-44 ${
                         index === 1 ? "z-10 scale-110 sm:-translate-y-3" : ""
                       }`}
                     >
@@ -169,7 +167,7 @@ function HomePage() {
                           loading="lazy"
                           className="size-full object-cover transition-transform duration-500 group-hover:scale-110"
                         />
-                        <span className="glass-panel absolute inset-x-1.5 bottom-1.5 flex items-center gap-1.5 rounded-full px-2 py-1.5 text-[10px] font-semibold leading-tight text-primary-foreground ring-1 ring-primary-foreground/15 sm:gap-2 sm:px-2.5 sm:text-xs">
+                        <span>
                           <span
                             aria-hidden="true"
                             className={`flex size-4 shrink-0 items-center justify-center rounded-full sm:size-5 ${accent.badge}`}
@@ -198,9 +196,9 @@ function HomePage() {
               title="One studio, every part of your project"
             />
             <p className="text-base leading-relaxed text-muted-foreground sm:text-lg">
-              Aran Media & Digital Printing — brings photography,
-              videography, drone coverage, event management and printing under one roof in Harur,
-              so you never have to coordinate between vendors.
+              Aran Media & Digital Printing — brings photography, videography, drone coverage, event
+              management and printing under one roof in Harur, so you never have to coordinate
+              between vendors.
             </p>
             <div>
               <Button asChild variant="outline">

@@ -46,7 +46,10 @@ export function GalleryShowcase() {
         </Reveal>
 
         <div className="mt-12 flex flex-col items-center gap-8">
-          <div key={activeItem.id} className="animate-in fade-in slide-in-from-bottom-2 text-center duration-500">
+          <div
+            key={activeItem.id}
+            className="animate-in fade-in slide-in-from-bottom-2 text-center duration-500"
+          >
             <p className="font-display text-xl font-semibold text-foreground sm:text-2xl">
               {activeItem.title}
             </p>
