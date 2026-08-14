@@ -1,6 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Clock, Layers, MapPin, TrendingUp } from "lucide-react";
 
 import eventsImage from "@/assets/service-events.jpg";
+import { CountUp } from "@/components/count-up";
 import { CtaBanner } from "@/components/cta-banner";
 import { FeatureList } from "@/components/feature-list";
 import { PageBanner } from "@/components/page-banner";
@@ -29,10 +31,10 @@ export const Route = createFileRoute("/about")({
 });
 
 const milestones = [
-  { value: "500+", label: "Projects delivered" },
-  { value: "4", label: "Core service lines" },
-  { value: "10+", label: "Districts covered" },
-  { value: "24 hrs", label: "Typical print turnaround" },
+  { value: 500, suffix: "+", label: "Projects delivered", icon: TrendingUp },
+  { value: 4, suffix: "", label: "Core service lines", icon: Layers },
+  { value: 10, suffix: "+", label: "Districts covered", icon: MapPin },
+  { value: 24, suffix: " hrs", label: "Typical print turnaround", icon: Clock },
 ];
 
 function AboutPage() {
@@ -54,49 +56,62 @@ function AboutPage() {
               title="One studio, every part of your project"
             />
             <p className="text-base leading-relaxed text-muted-foreground sm:text-lg">
-              Aran Media & Digital Printing — started as a small print
-              counter on Bye Pass Road and grew into a full media house as customers kept asking for
-              photography, video and decor alongside their printing.
+              Aran Media & Digital Printing — started as a small print counter on Bye Pass Road and
+              grew into a full media house as customers kept asking for photography, video and decor
+              alongside their printing.
             </p>
             <p className="text-base leading-relaxed text-muted-foreground sm:text-lg">
               Today the same team designs your artwork, prints your banners, decorates your stage,
-              flies the drone and edits the film. That single point of accountability is why families,
-              shops, schools and campaign teams across Dharmapuri district keep coming back.
+              flies the drone and edits the film. That single point of accountability is why
+              families, shops, schools and campaign teams across Dharmapuri district keep coming
+              back.
             </p>
-           <dl className="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-4">
-  {milestones.map((item, index) => (
-    <div
-      key={item.label}
-      className="group relative overflow-hidden rounded-2xl border border-border bg-card/80 p-5 shadow-e1 backdrop-blur-sm transition-all duration-300 hover:-translate-y-2 hover:border-brand/20 hover:shadow-e3"
-    >
-      {/* Soft decorative glow */}
-      <span
-        aria-hidden="true"
-        className={`absolute -right-10 -top-10 size-24 rounded-full blur-3xl transition-transform duration-500 group-hover:scale-150 ${
-          index % 2 === 0 ? "bg-brand/15" : "bg-gold/15"
-        }`}
-      />
+            <dl className="mt-4 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
+              {milestones.map((item, index) => {
+                const accent = index % 2 === 0 ? "brand" : "gold";
+                return (
+                  <div
+                    key={item.label}
+                    className="group relative flex flex-col overflow-hidden rounded-2xl bg-gradient-navy p-4 text-primary-foreground shadow-e2 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-e4 sm:p-5"
+                  >
+                    {/* Decorative growth sparkline, mirrors a stat-card motif */}
+                    <svg
+                      aria-hidden="true"
+                      viewBox="0 0 100 40"
+                      preserveAspectRatio="none"
+                      className={`pointer-events-none absolute inset-x-0 bottom-0 h-12 w-full opacity-25 transition-opacity duration-300 group-hover:opacity-45 sm:h-14 ${
+                        accent === "brand" ? "text-brand" : "text-gold"
+                      }`}
+                    >
+                      <polyline
+                        points="0,30 15,26 28,32 40,32 55,18 70,20 85,10 100,2"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="3"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
 
-      {/* Number */}
-      <dd className="relative font-display text-3xl font-bold tracking-tight text-foreground transition-transform duration-300 group-hover:scale-105 sm:text-4xl">
-        {item.value}
-      </dd>
+                    <span
+                      aria-hidden="true"
+                      className={`relative flex size-9 items-center justify-center rounded-lg ring-1 ring-primary-foreground/15 ${
+                        accent === "brand" ? "bg-brand/20 text-brand" : "bg-gold/20 text-gold"
+                      }`}
+                    >
+                      <item.icon className="size-4" />
+                    </span>
 
-      {/* Label */}
-      <dt className="relative mt-2 text-sm font-medium leading-snug text-muted-foreground">
-        {item.label}
-      </dt>
-
-      {/* Small decorative dot */}
-      <span
-        aria-hidden="true"
-        className={`absolute bottom-4 right-4 size-2 rounded-full opacity-50 transition-all duration-300 group-hover:scale-150 group-hover:opacity-100 ${
-          index % 2 === 0 ? "bg-brand" : "bg-gold"
-        }`}
-      />
-    </div>
-  ))}
-</dl>
+                    <dd className="relative mt-4 font-display text-3xl font-bold tracking-tight text-gradient-brand transition-transform duration-300 group-hover:scale-105 sm:text-4xl">
+                      <CountUp end={item.value} suffix={item.suffix} />
+                    </dd>
+                    <dt className="relative mt-1 text-sm font-medium leading-snug text-primary-foreground/70">
+                      {item.label}
+                    </dt>
+                  </div>
+                );
+              })}
+            </dl>
           </div>
           <img
             src={eventsImage}
@@ -218,7 +233,6 @@ function AboutPage() {
               </li>
             ))}
           </ul>
-         
         </div>
       </section>
 
