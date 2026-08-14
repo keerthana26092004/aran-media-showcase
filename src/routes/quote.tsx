@@ -76,7 +76,10 @@ function QuotePage() {
             <div className="rounded-2xl border border-border bg-card p-6 shadow-e1">
               <h2 className="text-xl text-foreground">Services you can quote for</h2>
               <FeatureList
-                items={[...services.map((service) => service.name), "Combined event + print package"]}
+                items={[
+                  ...services.map((service) => service.name),
+                  "Combined event + print package",
+                ]}
                 className="mt-4 gap-2"
               />
             </div>

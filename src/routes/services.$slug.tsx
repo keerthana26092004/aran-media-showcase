@@ -19,7 +19,10 @@ export const Route = createFileRoute("/services/$slug")({
   head: ({ loaderData }) => {
     if (!loaderData) {
       return {
-        meta: [{ title: "Service unavailable | Aran Media" }, { name: "robots", content: "noindex" }],
+        meta: [
+          { title: "Service unavailable | Aran Media" },
+          { name: "robots", content: "noindex" },
+        ],
       };
     }
     const title = `${loaderData.name} | Aran Media & Digital Printing`;

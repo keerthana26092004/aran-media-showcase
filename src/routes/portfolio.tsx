@@ -52,7 +52,11 @@ function PortfolioPage() {
 
       <PortfolioShowcase featured={featuredItem} targetId="portfolio-grid" />
 
-      <section id="portfolio-grid" aria-labelledby="portfolio-work" className="container-page section-y">
+      <section
+        id="portfolio-grid"
+        aria-labelledby="portfolio-work"
+        className="container-page section-y"
+      >
         <SectionHeading
           id="portfolio-work"
           eyebrow="Selected projects"

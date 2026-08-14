@@ -7,10 +7,7 @@ import { galleryItems } from "@/data/portfolio";
 /** Ten tiles, cycling through the available gallery photos. Desktop
  *  placement (two tall "anchor" frames flanking a denser centre) is
  *  defined in styles.css as `.gallery-mosaic` nth-child rules. */
-const tiles = Array.from(
-  { length: 10 },
-  (_, index) => galleryItems[index % galleryItems.length]!,
-);
+const tiles = Array.from({ length: 10 }, (_, index) => galleryItems[index % galleryItems.length]!);
 
 interface GalleryMosaicProps {
   /** Called when the "View Gallery" badge/button is activated. */

@@ -29,7 +29,9 @@ export function FloatingActions() {
           </button>
         ) : null}
         <a
-          href={whatsappLink(`Hello ${business.shortName}, I would like to enquire about your services.`)}
+          href={whatsappLink(
+            `Hello ${business.shortName}, I would like to enquire about your services.`,
+          )}
           target="_blank"
           rel="noreferrer noopener"
           className="animate-in fade-in slide-in-from-bottom-4 group relative flex size-14 items-center justify-center rounded-full bg-gradient-to-br from-[#2CDE6B] to-[#128C7E] text-white shadow-e2 ring-4 ring-white/10 duration-500 transition-transform hover:-translate-y-1 hover:shadow-e3 active:scale-95 sm:size-16"

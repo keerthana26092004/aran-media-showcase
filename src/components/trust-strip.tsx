@@ -83,11 +83,7 @@ export function TrustStrip({ items = values, variant = "light" }: TrustStripProp
           >
             <Icon className="size-6" />
           </span>
-          <h3
-            className={
-              isDark ? "text-lg text-primary-foreground" : "text-lg text-foreground"
-            }
-          >
+          <h3 className={isDark ? "text-lg text-primary-foreground" : "text-lg text-foreground"}>
             {title}
           </h3>
           <p

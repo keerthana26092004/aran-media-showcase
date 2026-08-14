@@ -71,14 +71,11 @@ export function PortfolioShowcase({ featured, targetId }: PortfolioShowcaseProps
               </p>
               <span aria-hidden="true" className="rule-spectrum w-12" />
             </div>
-            <h2 className="text-3xl text-foreground sm:text-4xl">
-              Work that speaks for itself
-            </h2>
+            <h2 className="text-3xl text-foreground sm:text-4xl">Work that speaks for itself</h2>
             <p className="text-base leading-relaxed text-muted-foreground sm:text-lg">
               This portfolio features projects we have delivered for families, businesses and
-              institutions across Harur and Dharmapuri district — printing, events, drone
-              coverage and videography, each approached with the same planning and attention to
-              detail.
+              institutions across Harur and Dharmapuri district — printing, events, drone coverage
+              and videography, each approached with the same planning and attention to detail.
             </p>
             <p className="text-base leading-relaxed text-muted-foreground sm:text-lg">
               We aim to produce work that is clean, professional and visually strong. Take a look

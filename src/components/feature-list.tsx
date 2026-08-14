@@ -11,20 +11,9 @@ interface FeatureListProps {
 }
 
 /** Accessible checked list used for service features and highlights. */
-export function FeatureList({
-  items,
-  columns = 1,
-  className,
-  iconClassName,
-}: FeatureListProps) {
+export function FeatureList({ items, columns = 1, className, iconClassName }: FeatureListProps) {
   return (
-    <ul
-      className={cn(
-        "grid gap-3",
-        columns === 2 ? "sm:grid-cols-2" : "grid-cols-1",
-        className,
-      )}
-    >
+    <ul className={cn("grid gap-3", columns === 2 ? "sm:grid-cols-2" : "grid-cols-1", className)}>
       {items.map((item) => (
         <li key={item} className="flex items-start gap-3">
           <span
