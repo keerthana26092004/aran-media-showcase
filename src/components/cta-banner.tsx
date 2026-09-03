@@ -33,7 +33,7 @@ export function CtaBanner({
         />
 
         <div
-          className="relative grid gap-6 overflow-hidden rounded-[2.5rem] px-6 py-10 shadow-e4 sm:px-10 sm:py-12 lg:grid-cols-[1.1fr_1fr] lg:items-center lg:gap-3 lg:overflow-visible h-85"
+          className="relative grid gap-6 overflow-hidden rounded-[2.5rem] px-6 py-10 shadow-e4 sm:px-10 sm:py-12 lg:h-85 lg:grid-cols-[1.1fr_1fr] lg:items-center lg:gap-3 lg:overflow-visible"
           style={{
             backgroundImage: `url(${ctaBg})`,
             backgroundSize: "cover",
@@ -66,43 +66,7 @@ export function CtaBanner({
             </div>
           </div>
 
-          {/* Mobile / Tablet */}
-          <div className="relative grid grid-cols-3 gap-1.5 lg:hidden">
-            <div className="overflow-hidden rounded-xl border-4 border-white bg-white shadow-e3">
-              <img
-                src={eventsImage}
-                alt="Wedding reception stage decorated with floral arches"
-                width={480}
-                height={480}
-                loading="lazy"
-                className="aspect-square w-full object-cover"
-              />
-            </div>
-
-            <div className="overflow-hidden rounded-xl border-4 border-white bg-white shadow-e3">
-              <img
-                src={droneImage}
-                alt="Aerial view of a temple town and river at golden hour"
-                width={480}
-                height={480}
-                loading="lazy"
-                className="aspect-square w-full object-cover"
-              />
-            </div>
-
-            <div className="overflow-hidden rounded-xl border-4 border-white bg-white p-3 shadow-e3">
-              <img
-                src="/Aran%20media%20logo.png"
-                alt={`${business.name} logo`}
-                width={1024}
-                height={411}
-                loading="lazy"
-                className="aspect-square w-full object-contain"
-              />
-            </div>
-          </div>
-
-          {/* Desktop collage */}
+          {/* Desktop collage (lg+ only — mobile/tablet shows text and buttons only) */}
           <div className="relative hidden lg:block lg:min-h-[18rem]">
             {/* Image 1 */}
             <div className="absolute left-10 top-1/2 w-36 -translate-y-1/2 -rotate-6 overflow-hidden rounded-xl border-4 border-white bg-white shadow-e3 transition-transform duration-500 hover:rotate-0 xl:left-14 xl:w-40">
