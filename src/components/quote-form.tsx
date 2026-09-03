@@ -72,11 +72,19 @@ export function QuoteForm({
   const onSubmit = async (values: QuoteValues) => {
     setSubmitError(null);
     try {
+      const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
+      if (!accessKey) {
+        console.error(
+          "VITE_WEB3FORMS_ACCESS_KEY is missing from this build. The quote form cannot send enquiries until it is set at build time and the site is rebuilt/redeployed.",
+        );
+        throw new Error("Missing Web3Forms access key");
+      }
+
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
-          access_key: import.meta.env["VITE_WEB3FORMS_ACCESS_KEY"],
+          access_key: accessKey,
           subject: `New enquiry: ${values.service} — ${business.name} website`,
           from_name: values.name,
           name: values.name,
